@@ -165,6 +165,21 @@
   .qcols .qtotal .l{font-size:15.5px;}
   .qcols .qtotal .v{font-size:clamp(24px,2.6vw,32px);}
 
+  /* sitemap tree */
+  .tree{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;text-align:left;}
+  @media(max-width:960px){.tree{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:640px){.tree{grid-template-columns:repeat(2,1fr);gap:10px;}}
+  .tree.cols2{grid-template-columns:repeat(4,1fr);}
+  .tnode{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.03);}
+  .tnode h3{font-size:14px;font-weight:700;margin-bottom:8px;letter-spacing:.01em;}
+  .tnode .r{display:block;font-size:10.5px;color:var(--gray2);font-family:ui-monospace,SF Mono,Menlo,monospace;margin-top:2px;font-weight:400;}
+  .tnode ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+  .tnode li{font-size:12.5px;color:var(--gray);line-height:1.45;padding-left:13px;position:relative;}
+  .tnode li::before{content:"";position:absolute;left:1px;top:.66em;width:6px;height:1.5px;background:rgba(0,0,0,.22);}
+  .tree.old .tnode h3{color:var(--gold-deep);}
+  .tree.new .tnode h3{color:var(--green);}
+  .tree.new .tnode{border-color:rgba(30,82,56,.16);}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
   .reveal.in{opacity:1;transform:none;}
@@ -264,6 +279,25 @@
       <div class="maprow"><span class="r">/journal</span><span class="n">農經期刊</span><span class="p">《農業與經濟》</span></div>
       <div class="maprow"><span class="r">/alumni</span><span class="n">系友專區</span><span class="p">李總統登輝系友專區</span></div>
     </div>
+  </div>
+</section>
+
+<!-- 5b NEW SITE TREE -->
+<section class="slide tint" id="s5b" data-label="新網站架構圖">
+  <div class="inner wide">
+    <div class="eyebrow gold reveal">改版後 · 網頁架構圖</div>
+    <h2 class="reveal" style="transition-delay:.05s">8 條主線，各安其位。</h2>
+    <div class="tree new reveal" style="transition-delay:.12s">
+      <div class="tnode"><h3>首頁<span class="r">/</span></h3><ul><li>形象視覺</li><li>消息摘要</li><li>招生快速入口</li></ul></div>
+      <div class="tnode"><h3>最新消息<span class="r">/news</span></h3><ul><li>公告</li><li>演講</li><li>徵才</li><li>活動花絮</li></ul></div>
+      <div class="tnode"><h3>本系簡介<span class="r">/about</span></h3><ul><li>系史沿革</li><li>目標與使命</li><li>系所榮譽</li><li>環境與設備</li></ul></div>
+      <div class="tnode"><h3>系所成員<span class="r">/faculty</span></h3><ul><li>專任・合聘・兼任</li><li>客座・名譽・退休</li><li>行政同仁</li></ul></div>
+      <div class="tnode"><h3>招生資訊<span class="r">/admissions</span></h3><ul><li>五學制招生入口</li><li>重要時程</li><li>考古題</li></ul></div>
+      <div class="tnode"><h3>課程資訊<span class="r">/courses</span></h3><ul><li>各學制課程表</li><li>修業規定</li><li>常用表格</li></ul></div>
+      <div class="tnode"><h3>農經期刊<span class="r">/journal</span></h3><ul><li>期刊簡介</li><li>歷期目錄</li><li>投稿與徵稿</li></ul></div>
+      <div class="tnode"><h3>系友專區<span class="r">/alumni</span></h3><ul><li>李總統登輝系友專區</li><li>捐贈書目</li><li>系友動態</li></ul></div>
+    </div>
+    <p class="lead reveal" style="transition-delay:.2s;font-size:16px">子分類以頁內標籤呈現，任何內容最多兩層即可觸及。</p>
   </div>
 </section>
 
