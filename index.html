@@ -177,6 +177,8 @@
   .tnode li{font-size:12.5px;color:var(--gray);line-height:1.45;padding-left:13px;position:relative;}
   .tnode li::before{content:"";position:absolute;left:1px;top:.66em;width:6px;height:1.5px;background:rgba(0,0,0,.22);}
   .tree.old .tnode h3{color:var(--gold-deep);}
+  .tree.old li.dup{color:var(--gold-deep);font-weight:700;}
+  .tree.old .tnode.hl{border-color:rgba(244,180,0,.55);background:rgba(244,180,0,.07);}
   .tree.new .tnode h3{color:var(--green);}
   .tree.new .tnode{border-color:rgba(30,82,56,.16);}
 
@@ -248,18 +250,41 @@
     <div class="chips reveal" style="transition-delay:.16s">
       <span class="chip"><b>最新消息</b><span class="c">4</span></span>
       <span class="chip"><b>本系簡介</b><span class="c">8</span></span>
-      <span class="chip"><b>系所成員</b><span class="c">7</span></span>
+      <span class="chip"><b>系所成員</b><span class="c">6</span></span>
       <span class="chip"><b>榮譽專區</b><span class="c">4</span></span>
-      <span class="chip"><b>招生資訊</b><span class="c">6</span></span>
-      <span class="chip"><b>課程資訊</b><span class="c">7</span></span>
+      <span class="chip"><b>招生資訊</b><span class="c">5</span></span>
+      <span class="chip"><b>課程資訊</b><span class="c">6</span></span>
       <span class="chip"><b>碩士在職專班</b><span class="c">3</span></span>
-      <span class="chip"><b>國際專班</b><span class="c">5</span></span>
-      <span class="chip"><b>農業與經濟期刊</b><span class="c">4</span></span>
+      <span class="chip"><b>國際專班</b><span class="c">4</span></span>
+      <span class="chip"><b>農業與經濟期刊</b><span class="c">6</span></span>
       <span class="chip"><b>李總統登輝系友專區</b><span class="c">5</span></span>
-      <span class="chip"><b>網路資源</b><span class="c">5</span></span>
+      <span class="chip"><b>網路資源</b><span class="c">3</span></span>
       <span class="chip"><b>International Conference</b><span class="c">1</span></span>
     </div>
     <p class="lead reveal" style="transition-delay:.22s;font-size:17px">在職專班、國際專班各自獨立成選單、又散落在招生與課程之下 — 這正是改版要解決的核心。</p>
+  </div>
+</section>
+
+<!-- 4b OLD SITE TREE -->
+<section class="slide alt" id="s4b" data-label="原網站架構圖">
+  <div class="inner wide">
+    <div class="eyebrow gold reveal">現況 · 網頁架構圖</div>
+    <h2 class="reveal" style="transition-delay:.05s">同一件事，散在三個選單。</h2>
+    <div class="tree old reveal" style="transition-delay:.12s">
+      <div class="tnode"><h3>最新消息</h3><ul><li>一般公告</li><li>演講公告</li><li>活動剪影</li><li>求職徵才</li></ul></div>
+      <div class="tnode"><h3>本系簡介</h3><ul><li>系史</li><li>教學與研究目標</li><li>教學研究設備</li><li>進修與就業</li><li>未來展望</li><li>本系法規</li><li>課程規劃與專業能力</li><li>交通資訊</li></ul></div>
+      <div class="tnode"><h3>系所成員</h3><ul><li>專任師資</li><li>兼任師資</li><li>名譽教授</li><li>退休教師</li><li>訪問教師</li><li>系所同仁</li></ul></div>
+      <div class="tnode"><h3>榮譽專區</h3><ul><li>教師榮譽</li><li>書卷獎專區</li><li>學生獲獎</li><li>獎學金專區</li></ul></div>
+      <div class="tnode"><h3>招生資訊</h3><ul><li>學士班</li><li>碩士班</li><li>博士班</li><li class="dup">碩士在職專班</li><li class="dup">國際專班</li></ul></div>
+      <div class="tnode"><h3>課程資訊</h3><ul><li>大學部</li><li>碩士班</li><li>博士班</li><li class="dup">碩士在職專班</li><li class="dup">國際專班</li><li>農企業實習</li></ul></div>
+      <div class="tnode hl"><h3>碩士在職專班</h3><ul><li>專班簡介</li><li>招生公告</li><li>專班課程</li></ul></div>
+      <div class="tnode hl"><h3>國際專班</h3><ul><li>專班簡介</li><li>課程</li><li>在學學生</li><li>論文與畢業申請</li></ul></div>
+      <div class="tnode"><h3>農業與經濟期刊</h3><ul><li>期刊消息</li><li>出版與徵稿簡則</li><li>編輯委員會</li><li>線上投稿</li><li>文稿規格說明</li><li>歷期瀏覽</li></ul></div>
+      <div class="tnode"><h3>李總統登輝系友專區</h3><ul><li>求學紀事</li><li>捐贈書目 中／英／日</li><li>捐贈書目 期刊</li></ul></div>
+      <div class="tnode"><h3>網路資源</h3><ul><li>教學資料</li><li>常用表格</li><li>考古題</li></ul></div>
+      <div class="tnode"><h3>International Conference</h3><ul><li>研討會資訊</li></ul></div>
+    </div>
+    <p class="lead reveal" style="transition-delay:.2s;font-size:16px">底色與金字標示＝同一內容重複出現：在職專班與國際專班，共出現在三個選單之下。</p>
   </div>
 </section>
 
@@ -397,24 +422,24 @@
 <section class="slide alt" id="s12" data-label="報價">
   <div class="inner wide">
     <div class="eyebrow gold reveal">報價</div>
-    <h2 class="reveal" style="transition-delay:.05s">基本 NT$11.5 萬，全配上限 NT$16.5 萬。</h2>
+    <h2 class="reveal" style="transition-delay:.05s">基本 NT$10 萬，全配上限 NT$14.5 萬。</h2>
     <div class="qcols reveal" style="transition-delay:.12s">
       <div>
         <div class="qhead">基本功能</div>
-        <div class="qrow"><span class="l">網站視覺設計<small>兩版方向提案，擇一定稿</small></span><span class="v">30,000</span></div>
-        <div class="qrow"><span class="l">網頁開發 · 8 頁 · 電腦手機平板皆適用<small>視差、淡入等動態互動效果</small></span><span class="v">40,000</span></div>
-        <div class="qrow"><span class="l">內容管理後台<small>消息／師資／課程，系辦自主更新</small></span><span class="v">20,000</span></div>
-        <div class="qrow"><span class="l">網站上線 · 安全加密憑證 · 首年主機<small>內容更新即時生效</small></span><span class="v">10,000</span></div>
-        <div class="qrow"><span class="l">舊站內容搬遷與整理</span><span class="v">15,000</span></div>
-        <div class="qtotal"><span class="l">基本功能小計</span><span class="v">NT$ 115,000</span></div>
+        <div class="qrow"><span class="l">網站視覺設計<small>兩版完整視覺提案，含首頁與內頁版型，擇一定稿後細修至滿意</small></span><span class="v">25,000</span></div>
+        <div class="qrow"><span class="l">網頁開發 · 8 頁<small>電腦、手機、平板皆適用；視差、淡入等動態效果與互動細節</small></span><span class="v">35,000</span></div>
+        <div class="qrow"><span class="l">內容管理後台<small>消息、師資、課程、榮譽皆由系辦自主更新，含操作教學</small></span><span class="v">20,000</span></div>
+        <div class="qrow"><span class="l">網站上線 · 安全加密憑證 · 首年主機<small>綁定系上網址，內容更新即時生效</small></span><span class="v">10,000</span></div>
+        <div class="qrow"><span class="l">舊站內容搬遷與整理<small>50+ 頁內容全數搬遷，重新歸類至新架構</small></span><span class="v">10,000</span></div>
+        <div class="qtotal"><span class="l">基本功能小計</span><span class="v">NT$ 100,000</span></div>
       </div>
       <div>
         <div class="qhead">加值功能（選配）</div>
         <div class="qrow"><span class="l">中英雙語系</span><span class="v">18,000</span></div>
-        <div class="qrow"><span class="l">教職員登入後台</span><span class="v">12,000</span></div>
-        <div class="qrow"><span class="l">活動報名系統<small>演講／活動線上報名，名單自動彙整</small></span><span class="v">15,000</span></div>
+        <div class="qrow"><span class="l">教職員登入後台</span><span class="v">10,000</span></div>
+        <div class="qrow"><span class="l">活動報名系統<small>演講／活動線上報名，名單自動彙整</small></span><span class="v">12,000</span></div>
         <div class="qrow"><span class="l">搜尋引擎優化 · 社群分享預覽 · 流量分析</span><span class="v">5,000</span></div>
-        <div class="qtotal"><span class="l">建置費合計（含全部加值）</span><span class="v">NT$ 165,000</span></div>
+        <div class="qtotal"><span class="l">建置費合計（含全部加值）</span><span class="v">NT$ 145,000</span></div>
       </div>
     </div>
     <p class="qsub reveal" style="transition-delay:.18s"><b>年度維運 NT$36,000/年</b>（首年含）　·　付款 50 / 30 / 20　·　上線後 90 天保固</p>
