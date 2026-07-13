@@ -117,7 +117,7 @@
   /* A frame */
   .fa .topbar-mock{position:absolute;top:0;left:0;right:0;height:22px;background:#f8b62c;z-index:3;display:flex;align-items:center;padding:0 12px;font-size:8px;color:#3a2e00;letter-spacing:.1em;font-weight:600;}
   .fa .veil{background:linear-gradient(180deg,rgba(30,45,32,.1),rgba(30,45,32,.6));}
-  .fa .ey{position:absolute;left:22px;bottom:74px;z-index:3;font-family:var(--serif);font-size:9px;letter-spacing:.24em;color:#ffd758;text-transform:uppercase;}
+  .fa .ey{position:absolute;left:22px;bottom:102px;z-index:3;font-family:var(--serif);font-size:9px;letter-spacing:.24em;color:#ffd758;text-transform:uppercase;}
   .fa .ti{position:absolute;left:22px;bottom:24px;right:22px;z-index:3;font-family:var(--serif);font-weight:700;color:#fff;font-size:clamp(20px,2.4vw,26px);line-height:1.2;text-shadow:0 2px 14px rgba(0,0,0,.4);}
   /* B frame */
   .fb .inner-b{position:absolute;inset:12px;border-radius:15px;overflow:hidden;z-index:2;}
@@ -126,7 +126,7 @@
   .fb .glass .gd{width:14px;height:14px;border-radius:5px;background:#f8b62c;}
   .fb .glass .gt{font-size:8.5px;font-weight:700;color:#00682f;}
   .fb .veil{background:linear-gradient(120deg,rgba(25,45,30,.5),transparent 60%);z-index:3;}
-  .fb .ey{position:absolute;left:26px;bottom:70px;z-index:4;font-size:8.5px;letter-spacing:.22em;color:#ffd758;font-weight:700;text-transform:uppercase;}
+  .fb .ey{position:absolute;left:26px;bottom:98px;z-index:4;font-size:8.5px;letter-spacing:.22em;color:#ffd758;font-weight:700;text-transform:uppercase;}
   .fb .ti{position:absolute;left:26px;bottom:26px;right:34px;z-index:4;font-weight:900;color:#fff;font-size:clamp(20px,2.4vw,26px);line-height:1.12;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.35);}
 
   .pv-side .why{list-style:none;display:flex;flex-direction:column;gap:13px;margin:20px 0 26px;}
@@ -156,6 +156,14 @@
   .qtotal .v{font-size:clamp(30px,4vw,44px);font-weight:700;color:var(--gold-deep);letter-spacing:-.02em;}
   .qsub{font-size:14px;color:var(--gray);margin-top:20px;}
   .qsub b{color:var(--ink);font-weight:600;}
+  .qcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4.5vw,72px);margin-top:38px;text-align:left;align-items:end;}
+  @media(max-width:760px){.qcols{grid-template-columns:1fr;gap:36px;align-items:stretch;}}
+  .qhead{font-size:14px;font-weight:700;color:var(--gold-deep);letter-spacing:.05em;padding-bottom:10px;border-bottom:2px solid var(--gold-deep);}
+  .qcols .qrow{padding:13px 0;}
+  .qcols .qrow .l{font-size:15px;}
+  .qcols .qtotal{margin-top:18px;padding-top:16px;}
+  .qcols .qtotal .l{font-size:15.5px;}
+  .qcols .qtotal .v{font-size:clamp(24px,2.6vw,32px);}
 
   /* reveal */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
@@ -186,7 +194,7 @@
   <div class="inner">
     <img class="reveal" src="agec-logo.png" alt="國立臺灣大學 農業經濟學系" style="width:clamp(200px,27vw,320px);height:auto;margin:0 auto 34px;display:block;">
     <div class="eyebrow reveal" style="transition-delay:.05s">網站改版提案　·　2026</div>
-    <h1 class="reveal" style="transition-delay:.1s">國立臺灣大學<br>農業經濟學系<br>官方網站改版</h1>
+    <h1 class="reveal" style="transition-delay:.1s">官方網站改版</h1>
     <p class="lead reveal" style="transition-delay:.12s">以世界頂尖學院的視覺語言，<br>將百年學術傳承帶進數位時代。</p>
     <p class="fine reveal" style="transition-delay:.18s">預計 9/1 交付測試　·　9/15 正式上線</p>
   </div>
@@ -210,8 +218,8 @@
     <div class="grid g4 reveal" style="transition-delay:.12s">
       <div class="cell"><div class="k">資訊架構龐雜</div><div class="d">12 大分類、逾 50 頁，選單重複、層級深，訪客不易找到目標。</div></div>
       <div class="cell"><div class="k">視覺老舊</div><div class="d">缺乏一致的品牌識別與現代排版，難以呈現世界一流學院的質感。</div></div>
-      <div class="cell"><div class="k">不支援行動裝置</div><div class="d">手機與平板體驗不佳，然而多數報考學生以手機為主。</div></div>
-      <div class="cell"><div class="k">維護不便</div><div class="d">消息、師資、課程更新需仰賴工程協助，時效性受限。</div></div>
+      <div class="cell"><div class="k">行動體驗不佳</div><div class="d">手機雖能開啟，但版面未為行動裝置優化，而多數報考學生以手機為主。</div></div>
+      <div class="cell"><div class="k">招生入口不明</div><div class="d">報考資訊散落在多個選單與公告中，準學生缺乏清晰的入口與引導。</div></div>
     </div>
   </div>
 </section>
@@ -338,12 +346,12 @@
 <section class="slide" id="s11" data-label="時間表">
   <div class="inner wide">
     <div class="eyebrow reveal">執行時間表</div>
-    <h2 class="reveal" style="transition-delay:.05s">9 週交付。</h2>
+    <h2 class="reveal" style="transition-delay:.05s">8 週交付。</h2>
     <div class="tl reveal" style="transition-delay:.12s">
-      <div class="step"><span class="when">7/13–7/20</span><span class="what">需求確認與內容盤點</span></div>
-      <div class="step"><span class="when">7/21–8/10</span><span class="what">視覺定版 + 前端開發</span></div>
-      <div class="step"><span class="when">8/11–8/25</span><span class="what">內容管理後台建置 + 資料搬遷</span></div>
-      <div class="step"><span class="when">8/26–8/31</span><span class="what">整合測試與修正</span></div>
+      <div class="step"><span class="when">7/20–7/27</span><span class="what">需求確認與內容盤點</span></div>
+      <div class="step"><span class="when">7/28–8/13</span><span class="what">視覺定版 + 網頁開發</span></div>
+      <div class="step"><span class="when">8/14–8/26</span><span class="what">內容管理後台建置 + 資料搬遷</span></div>
+      <div class="step"><span class="when">8/27–8/31</span><span class="what">整合測試與修正</span></div>
       <div class="step mile"><span class="when">9/1</span><span class="what"><b>交付測試版</b><span class="tag">里程碑</span>　供系辦全面試用驗收</span></div>
       <div class="step"><span class="when">9/1–9/14</span><span class="what">系辦驗收與調整</span></div>
       <div class="step mile"><span class="when">9/15</span><span class="what"><b>正式上線</b><span class="tag">里程碑</span>　啟用正式網址、切換正式站</span></div>
@@ -351,39 +359,35 @@
   </div>
 </section>
 
-<!-- 12 QUOTE BASE -->
-<section class="slide alt" id="s12" data-label="報價 · 基本">
-  <div class="inner">
-    <div class="eyebrow gold reveal">報價 · 基本功能</div>
-    <h2 class="reveal" style="transition-delay:.05s">核心交付</h2>
-    <div class="qlist reveal" style="transition-delay:.12s">
-      <div class="qrow"><span class="l">網站視覺設計<small>兩版方向提案，擇一定稿</small></span><span class="v">30,000</span></div>
-      <div class="qrow"><span class="l">網頁開發 · 8 頁 · 電腦手機平板皆適用<small>視差、淡入等動態互動效果</small></span><span class="v">40,000</span></div>
-      <div class="qrow"><span class="l">內容管理後台<small>消息／師資／課程，系辦自主更新</small></span><span class="v">20,000</span></div>
-      <div class="qrow"><span class="l">網站上線 · 安全加密憑證 · 首年主機<small>內容更新即時生效</small></span><span class="v">10,000</span></div>
-      <div class="qtotal"><span class="l">基本功能小計</span><span class="v">NT$ 100,000</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 13 QUOTE ADD -->
-<section class="slide" id="s13" data-label="報價 · 加值">
-  <div class="inner">
-    <div class="eyebrow gold reveal">報價 · 加值功能（選配）</div>
-    <h2 class="reveal" style="transition-delay:.05s">合計上限 NT$15 萬</h2>
-    <div class="qlist reveal" style="transition-delay:.12s">
-      <div class="qrow"><span class="l">舊站內容搬遷與整理</span><span class="v">15,000</span></div>
-      <div class="qrow"><span class="l">中英雙語系</span><span class="v">18,000</span></div>
-      <div class="qrow"><span class="l">教職員登入後台</span><span class="v">12,000</span></div>
-      <div class="qrow"><span class="l">搜尋引擎優化 · 社群分享預覽 · 流量分析</span><span class="v">5,000</span></div>
-      <div class="qtotal"><span class="l">建置費合計（含全部加值）</span><span class="v">NT$ 150,000</span></div>
+<!-- 12 QUOTE -->
+<section class="slide alt" id="s12" data-label="報價">
+  <div class="inner wide">
+    <div class="eyebrow gold reveal">報價</div>
+    <h2 class="reveal" style="transition-delay:.05s">基本 NT$10 萬，全配上限 NT$15 萬。</h2>
+    <div class="qcols reveal" style="transition-delay:.12s">
+      <div>
+        <div class="qhead">基本功能</div>
+        <div class="qrow"><span class="l">網站視覺設計<small>兩版方向提案，擇一定稿</small></span><span class="v">30,000</span></div>
+        <div class="qrow"><span class="l">網頁開發 · 8 頁 · 電腦手機平板皆適用<small>視差、淡入等動態互動效果</small></span><span class="v">40,000</span></div>
+        <div class="qrow"><span class="l">內容管理後台<small>消息／師資／課程，系辦自主更新</small></span><span class="v">20,000</span></div>
+        <div class="qrow"><span class="l">網站上線 · 安全加密憑證 · 首年主機<small>內容更新即時生效</small></span><span class="v">10,000</span></div>
+        <div class="qtotal"><span class="l">基本功能小計</span><span class="v">NT$ 100,000</span></div>
+      </div>
+      <div>
+        <div class="qhead">加值功能（選配）</div>
+        <div class="qrow"><span class="l">舊站內容搬遷與整理</span><span class="v">15,000</span></div>
+        <div class="qrow"><span class="l">中英雙語系</span><span class="v">18,000</span></div>
+        <div class="qrow"><span class="l">教職員登入後台</span><span class="v">12,000</span></div>
+        <div class="qrow"><span class="l">搜尋引擎優化 · 社群分享預覽 · 流量分析</span><span class="v">5,000</span></div>
+        <div class="qtotal"><span class="l">建置費合計（含全部加值）</span><span class="v">NT$ 150,000</span></div>
+      </div>
     </div>
     <p class="qsub reveal" style="transition-delay:.18s"><b>年度維運 NT$36,000/年</b>（首年含）　·　付款 50 / 30 / 20　·　上線後 90 天保固</p>
   </div>
 </section>
 
-<!-- 14 CLOSING -->
-<section class="slide tint" id="s14" data-label="結尾">
+<!-- 13 CLOSING -->
+<section class="slide tint" id="s13" data-label="結尾">
   <div class="inner">
     <div class="eyebrow reveal">The pitch</div>
     <h1 class="reveal" style="transition-delay:.05s;font-size:clamp(30px,5.2vw,62px)">讓農經系的網路門面，<br>配得上它的學術地位。</h1>
