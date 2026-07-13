@@ -156,18 +156,19 @@
   .qtotal .v{font-size:clamp(30px,4vw,44px);font-weight:700;color:var(--gold-deep);letter-spacing:-.02em;}
   .qsub{font-size:14px;color:var(--gray);margin-top:20px;}
   .qsub b{color:var(--ink);font-weight:600;}
-  .qcols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(22px,3vw,44px);margin-top:30px;text-align:left;align-items:start;}
-  @media(max-width:860px){.qcols{grid-template-columns:1fr;gap:30px;}}
-  .qhead{font-size:13.5px;font-weight:700;color:var(--gold-deep);letter-spacing:.04em;padding-bottom:9px;border-bottom:2px solid var(--gold-deep);}
-  .qhead.big{color:var(--green);border-bottom-color:var(--green);}
-  .qcols .qrow{padding:10px 0;gap:12px;}
-  .qcols .qrow .l{font-size:14px;}
-  .qcols .qrow .l small{font-size:11.5px;margin-top:2px;}
-  .qcols .qrow .v{font-size:14px;}
-  .qcols .qtotal{margin-top:14px;padding-top:14px;}
-  .qcols .qtotal .l{font-size:14.5px;}
-  .qcols .qtotal .v{font-size:clamp(20px,2.2vw,27px);}
-  .qcols .qtotal.big .v{color:var(--green);}
+  .qcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4.5vw,64px);margin-top:34px;text-align:left;align-items:start;}
+  @media(max-width:760px){.qcols{grid-template-columns:1fr;gap:32px;}}
+  .qhead{font-size:14px;font-weight:700;color:var(--gold-deep);letter-spacing:.04em;padding-bottom:10px;border-bottom:2px solid var(--gold-deep);}
+  .qhead small{font-weight:500;color:var(--gray2);letter-spacing:0;margin-left:6px;font-size:12px;}
+  .qhead.back{color:var(--green);border-bottom-color:var(--green);}
+  .qcols .qrow{padding:12px 0;gap:14px;}
+  .qcols .qrow .l{font-size:14.5px;}
+  .qcols .qrow .l small{font-size:12px;margin-top:2px;}
+  .qcols .qrow .v{font-size:14.5px;}
+  .qcols .qtotal{margin-top:16px;padding-top:15px;}
+  .qcols .qtotal .l{font-size:15px;}
+  .qcols .qtotal .v{font-size:clamp(22px,2.4vw,30px);}
+  .qcols .qtotal.back .v{color:var(--green);}
 
   /* sitemap tree */
   .tree{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;text-align:left;}
@@ -426,36 +427,27 @@
 <section class="slide alt" id="s12" data-label="報價">
   <div class="inner wide">
     <div class="eyebrow gold reveal">報價</div>
-    <h2 class="reveal" style="transition-delay:.05s">基本 NT$10 萬起，全配 NT$27.6 萬。</h2>
+    <h2 class="reveal" style="transition-delay:.05s">前台 ＋ 後台，建置合計 NT$14.2 萬。</h2>
     <div class="qcols reveal" style="transition-delay:.12s">
       <div>
-        <div class="qhead">基本功能</div>
-        <div class="qrow"><span class="l">網站視覺設計<small>兩版完整提案，含首頁與內頁版型，擇一定稿後細修</small></span><span class="v">25,000</span></div>
-        <div class="qrow"><span class="l">網頁開發 · 8 頁<small>電腦、手機、平板皆適用；含動態效果與互動</small></span><span class="v">35,000</span></div>
-        <div class="qrow"><span class="l">內容管理後台<small>消息、師資、課程、榮譽由系辦自主更新</small></span><span class="v">20,000</span></div>
-        <div class="qrow"><span class="l">上線 · 加密憑證 · 首年主機<small>綁定系上網址，即時生效</small></span><span class="v">10,000</span></div>
-        <div class="qrow"><span class="l">舊站內容搬遷與整理<small>50+ 頁內容搬遷歸類至新架構</small></span><span class="v">10,000</span></div>
-        <div class="qtotal"><span class="l">基本功能小計</span><span class="v">NT$ 100,000</span></div>
-      </div>
-      <div>
-        <div class="qhead">加值功能（選配）</div>
-        <div class="qrow"><span class="l">繁中 · 英 · 簡中三語系</span><span class="v">18,000</span></div>
+        <div class="qhead">前台<small>訪客瀏覽端</small></div>
+        <div class="qrow"><span class="l">網站視覺設計<small>兩版方向提案，含首頁與內頁版型，擇一定稿後細修</small></span><span class="v">25,000</span></div>
+        <div class="qrow"><span class="l">前台網頁開發 · 8 頁<small>電腦、手機、平板皆適用；含視差、淡入等動態互動</small></span><span class="v">38,000</span></div>
+        <div class="qrow"><span class="l">繁中 · 英 · 簡中三語系<small>全站三語切換</small></span><span class="v">15,000</span></div>
         <div class="qrow"><span class="l">全站搜尋<small>師資、公告、下載檔全站關鍵字檢索</small></span><span class="v">8,000</span></div>
-        <div class="qrow"><span class="l">檔案下載中心<small>表格、考古題、簡章 PDF 上傳與分類管理</small></span><span class="v">10,000</span></div>
-        <div class="qrow"><span class="l">活動報名系統<small>演講／活動線上報名，名單自動彙整</small></span><span class="v">12,000</span></div>
-        <div class="qrow"><span class="l">教職員登入後台</span><span class="v">10,000</span></div>
-        <div class="qrow"><span class="l">搜尋引擎優化 · 社群分享 · 流量分析</span><span class="v">5,000</span></div>
-        <div class="qtotal"><span class="l">加值小計</span><span class="v">NT$ 63,000</span></div>
+        <div class="qrow"><span class="l">無障礙網頁 AA<small>符合政府網站無障礙規範</small></span><span class="v">8,000</span></div>
+        <div class="qtotal"><span class="l">前台小計</span><span class="v">NT$ 94,000</span></div>
       </div>
       <div>
-        <div class="qhead big">大型子系統（選配）</div>
-        <div class="qrow"><span class="l">期刊線上投審稿系統<small>《農業與經濟》投稿、雙盲審稿流程、歷期全文資料庫；保留原系統僅視覺整合則另議</small></span><span class="v">80,000</span></div>
-        <div class="qrow"><span class="l">系友專區（含登入）<small>系友登入、捐贈書目資料庫，與舊系統資料搬遷</small></span><span class="v">18,000</span></div>
-        <div class="qrow"><span class="l">無障礙網頁 AA 標章送測<small>符合政府網站無障礙規範並送測取證</small></span><span class="v">15,000</span></div>
-        <div class="qtotal big"><span class="l">子系統小計</span><span class="v">NT$ 113,000</span></div>
+        <div class="qhead back">後台<small>系辦管理端</small></div>
+        <div class="qrow"><span class="l">內容管理後台<small>消息、師資、課程、榮譽由系辦登入自主更新，含操作教學</small></span><span class="v">20,000</span></div>
+        <div class="qrow"><span class="l">檔案下載中心<small>表格、考古題、簡章 PDF 上傳與分類管理</small></span><span class="v">8,000</span></div>
+        <div class="qrow"><span class="l">活動報名系統<small>演講／活動線上報名，名單自動彙整</small></span><span class="v">10,000</span></div>
+        <div class="qrow"><span class="l">上線 · 加密憑證 · 首年主機 · 舊站搬遷<small>綁定系上網址，50+ 頁內容搬遷歸類</small></span><span class="v">10,000</span></div>
+        <div class="qtotal back"><span class="l">後台小計</span><span class="v">NT$ 48,000</span></div>
       </div>
     </div>
-    <p class="qsub reveal" style="transition-delay:.18s"><b>全配合計 NT$ 276,000</b>　·　<b>年度維運 NT$36,000/年</b>（首年含）　·　付款 50 / 30 / 20　·　上線後 90 天保固</p>
+    <p class="qsub reveal" style="transition-delay:.18s"><b>建置合計 NT$ 142,000</b>　·　<b>年度維運 NT$36,000/年</b>（首年含）　·　付款 50 / 30 / 20　·　上線後 90 天保固</p>
   </div>
 </section>
 
