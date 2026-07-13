@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>農業經濟學系 官網改版提案</title>
+<link rel="icon" type="image/png" href="agec-mark.png">
+<link rel="apple-touch-icon" href="agec-mark.png">
+<meta name="description" content="國立臺灣大學農業經濟學系官方網站改版提案 — Apple 風簡報：現況與新版網站地圖、A/B 設計方向、時間表與報價。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfbfd; --bg-alt:#ffffff; --bg-tint:#f4f7f5;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray2:#86868b; --line:rgba(0,0,0,.09);
+    --green:#00682f; --green-soft:#2c7a4a; --gold:#f8b62c; --gold-deep:#b8860b;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Segoe UI","Noto Sans TC",sans-serif;
+    --serif:"Noto Serif TC",serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --maxw:940px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-snap-type:y mandatory;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- progress + header ---------- */
+  .progress{position:fixed;inset:0 0 auto 0;height:2px;z-index:80;background:transparent;pointer-events:none;}
+  .progress i{display:block;height:100%;width:0;background:var(--green);transition:width .5s var(--ease);}
+  .topbar{position:fixed;inset:0 0 auto 0;z-index:70;display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(18px,4vw,44px);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    background:rgba(251,251,253,.72);border-bottom:1px solid rgba(0,0,0,.06);}
+  .topbar .brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:.01em;}
+  .topbar .brand .dot{height:24px;width:auto;display:block;}
+  .topbar .links{display:flex;gap:20px;font-size:13.5px;font-weight:500;color:var(--gray);}
+  .topbar .links a{transition:color .2s;}
+  .topbar .links a:hover{color:var(--green);}
+  @media(max-width:640px){.topbar .links{display:none;}}
+
+  /* ---------- dot nav ---------- */
+  .nav{position:fixed;top:50%;right:max(14px,2vw);transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:13px;align-items:flex-end;}
+  .nav button{position:relative;display:flex;align-items:center;cursor:pointer;background:none;border:0;padding:3px 0 3px 8px;}
+  .nav button::after{content:"";width:8px;height:8px;border-radius:999px;border:1.5px solid rgba(0,0,0,.28);background:transparent;
+    transition:transform .35s var(--ease),background .35s,border-color .35s;}
+  .nav button[data-active="true"]::after{background:var(--green);border-color:var(--green);transform:scale(1.55);}
+  .nav .lbl{margin-right:11px;font-size:12px;font-weight:500;color:var(--ink);background:rgba(255,255,255,.86);backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:3px 11px;white-space:nowrap;
+    opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .nav button:hover .lbl,.nav button:focus-visible .lbl{opacity:1;transform:none;}
+  @media(max-width:820px){.nav{display:none;}}
+
+  /* ---------- slides ---------- */
+  .slide{min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;padding:110px clamp(22px,5vw,40px) 84px;position:relative;}
+  .slide.alt{background:var(--bg-alt);}
+  .slide.tint{background:var(--bg-tint);}
+  .inner{width:100%;max-width:var(--maxw);}
+  .wide{max-width:1120px;}
+
+  .eyebrow{font-size:clamp(14px,1.7vw,17px);font-weight:600;color:var(--green);letter-spacing:.01em;margin-bottom:18px;}
+  .eyebrow.gold{color:var(--gold-deep);}
+  h1{font-size:clamp(38px,7vw,84px);font-weight:700;letter-spacing:-.03em;line-height:1.04;}
+  h2{font-size:clamp(30px,4.8vw,58px);font-weight:700;letter-spacing:-.025em;line-height:1.08;}
+  .lead{font-size:clamp(17px,2.3vw,23px);font-weight:400;color:var(--gray);line-height:1.55;max-width:720px;margin:22px auto 0;letter-spacing:.005em;}
+  .fine{font-size:13.5px;color:var(--gray2);margin-top:14px;letter-spacing:.02em;}
+  .stat{font-size:clamp(84px,17vw,208px);font-weight:700;letter-spacing:-.04em;line-height:.9;color:var(--gold-deep);}
+  .stat.green{color:var(--green);}
+  .stat-cap{font-size:clamp(16px,2vw,20px);color:var(--gray);margin-top:6px;}
+
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-size:16px;font-weight:600;
+    padding:13px 26px;border-radius:980px;transition:transform .25s var(--ease),background .25s,box-shadow .25s;margin-top:8px;}
+  .cta:hover{transform:scale(1.035);background:var(--green-soft);box-shadow:0 12px 28px rgba(30,82,56,.28);}
+  .cta.ghost{background:transparent;color:var(--green);border:1px solid rgba(30,82,56,.35);}
+  .cta.ghost:hover{background:rgba(30,82,56,.06);box-shadow:none;}
+  .linkrow{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px;}
+  .textlink{color:var(--green);font-weight:600;font-size:16px;transition:opacity .2s;}
+  .textlink:hover{opacity:.62;}
+
+  .scrollhint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--gray2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:7px;}
+  .scrollhint .chev{width:16px;height:16px;border-right:1.6px solid var(--gray2);border-bottom:1.6px solid var(--gray2);transform:rotate(45deg);animation:bob 1.8s var(--ease) infinite;}
+  @keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.85}50%{transform:rotate(45deg) translate(3px,3px);opacity:.35}}
+
+  /* pain grid */
+  .grid{display:grid;gap:clamp(16px,2.4vw,26px);margin-top:44px;text-align:left;}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g2{grid-template-columns:repeat(2,1fr);}
+  @media(max-width:820px){.g4,.g3{grid-template-columns:1fr 1fr;}.g2{grid-template-columns:1fr;}}
+  @media(max-width:520px){.g4,.g3{grid-template-columns:1fr;}}
+  .cell .k{font-size:clamp(17px,2vw,20px);font-weight:600;color:var(--ink);margin-bottom:7px;}
+  .cell .d{font-size:14.5px;color:var(--gray);line-height:1.6;}
+  .cell .num{font-size:15px;font-weight:700;color:var(--green);margin-bottom:12px;}
+
+  /* old sitemap chips */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:36px;max-width:820px;margin-left:auto;margin-right:auto;}
+  .chip{font-size:14px;color:var(--gray);background:rgba(0,0,0,.035);border:1px solid var(--line);border-radius:999px;padding:7px 15px;}
+  .chip b{color:var(--ink);font-weight:600;}
+  .chip .c{color:var(--gold-deep);font-weight:700;margin-left:6px;font-size:12.5px;}
+
+  /* new sitemap list */
+  .maplist{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;margin-top:40px;text-align:left;max-width:860px;margin-left:auto;margin-right:auto;}
+  @media(max-width:680px){.maplist{grid-template-columns:1fr;}}
+  .maprow{display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .maprow .r{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12.5px;color:var(--green);flex:none;width:96px;}
+  .maprow .n{font-size:16px;font-weight:600;flex:none;}
+  .maprow .p{font-size:13.5px;color:var(--gray);}
+
+  /* design preview */
+  .previews{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;margin-top:8px;}
+  .pv-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;text-align:left;}
+  @media(max-width:820px){.pv-wrap{grid-template-columns:1fr;}}
+  .frame{border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.14),0 6px 18px rgba(0,0,0,.06);background:#fff;position:relative;aspect-ratio:16/10;}
+  .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .frame .veil{position:absolute;inset:0;}
+  /* A frame */
+  .fa .topbar-mock{position:absolute;top:0;left:0;right:0;height:22px;background:#f8b62c;z-index:3;display:flex;align-items:center;padding:0 12px;font-size:8px;color:#3a2e00;letter-spacing:.1em;font-weight:600;}
+  .fa .veil{background:linear-gradient(180deg,rgba(30,45,32,.1),rgba(30,45,32,.6));}
+  .fa .ey{position:absolute;left:22px;bottom:74px;z-index:3;font-family:var(--serif);font-size:9px;letter-spacing:.24em;color:#ffd758;text-transform:uppercase;}
+  .fa .ti{position:absolute;left:22px;bottom:24px;right:22px;z-index:3;font-family:var(--serif);font-weight:700;color:#fff;font-size:clamp(20px,2.4vw,26px);line-height:1.2;text-shadow:0 2px 14px rgba(0,0,0,.4);}
+  /* B frame */
+  .fb .inner-b{position:absolute;inset:12px;border-radius:15px;overflow:hidden;z-index:2;}
+  .fb .inner-b img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .fb .glass{position:absolute;top:0;left:0;right:0;height:26px;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);z-index:4;display:flex;align-items:center;gap:6px;padding:0 12px;}
+  .fb .glass .gd{width:14px;height:14px;border-radius:5px;background:#f8b62c;}
+  .fb .glass .gt{font-size:8.5px;font-weight:700;color:#00682f;}
+  .fb .veil{background:linear-gradient(120deg,rgba(25,45,30,.5),transparent 60%);z-index:3;}
+  .fb .ey{position:absolute;left:26px;bottom:70px;z-index:4;font-size:8.5px;letter-spacing:.22em;color:#ffd758;font-weight:700;text-transform:uppercase;}
+  .fb .ti{position:absolute;left:26px;bottom:26px;right:34px;z-index:4;font-weight:900;color:#fff;font-size:clamp(20px,2.4vw,26px);line-height:1.12;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.35);}
+
+  .pv-side .why{list-style:none;display:flex;flex-direction:column;gap:13px;margin:20px 0 26px;}
+  .pv-side .why li{font-size:15.5px;color:var(--ink);padding-left:24px;position:relative;line-height:1.5;}
+  .pv-side .why li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:999px;background:var(--green);}
+  .pv-side .meta{font-size:13px;color:var(--gray2);margin-bottom:20px;}
+
+  /* timeline */
+  .tl{display:flex;flex-direction:column;gap:2px;margin-top:40px;text-align:left;max-width:720px;margin-left:auto;margin-right:auto;}
+  .tl .step{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  @media(max-width:520px){.tl .step{grid-template-columns:92px 1fr;gap:12px;}}
+  .tl .when{font-size:15px;font-weight:600;color:var(--gray);}
+  .tl .what{font-size:15.5px;color:var(--ink);}
+  .tl .step.mile .when{color:var(--green);}
+  .tl .step.mile{background:rgba(30,82,56,.045);border-radius:12px;padding:15px 16px;border-bottom-color:transparent;margin:3px 0;}
+  .tl .step.mile .what b{color:var(--green);}
+  .tl .tag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--green);border-radius:999px;padding:1px 9px;margin-left:8px;vertical-align:middle;}
+
+  /* quote */
+  .qlist{margin-top:38px;text-align:left;max-width:680px;margin-left:auto;margin-right:auto;}
+  .qrow{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);}
+  .qrow .l{font-size:16px;font-weight:500;}
+  .qrow .l small{display:block;font-size:12.5px;color:var(--gray2);font-weight:400;margin-top:3px;}
+  .qrow .v{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .qtotal{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;padding-top:20px;border-top:2px solid rgba(0,0,0,.12);}
+  .qtotal .l{font-size:18px;font-weight:600;}
+  .qtotal .v{font-size:clamp(30px,4vw,44px);font-weight:700;color:var(--gold-deep);letter-spacing:-.02em;}
+  .qsub{font-size:14px;color:var(--gray);margin-top:20px;}
+  .qsub b{color:var(--ink);font-weight:600;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-snap-type:none;scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .scrollhint .chev{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><i id="pfill"></i></div>
+
+<header class="topbar">
+  <a class="brand" href="#s1"><img class="dot" src="agec-mark.png" alt="臺大農經系標誌">農業經濟學系 · 官網改版提案</a>
+  <nav class="links">
+    <a href="preview-a/" target="_blank" rel="noopener">風格 A 預覽</a>
+    <a href="preview-b/" target="_blank" rel="noopener">風格 B 預覽</a>
+  </nav>
+</header>
+
+<nav class="nav" id="dots" aria-label="投影片導覽"></nav>
+
+<!-- 1 COVER -->
+<section class="slide" id="s1" data-label="封面">
+  <div class="inner">
+    <img class="reveal" src="agec-logo.png" alt="國立臺灣大學 農業經濟學系" style="width:clamp(200px,27vw,320px);height:auto;margin:0 auto 34px;display:block;">
+    <div class="eyebrow reveal" style="transition-delay:.05s">網站改版提案　·　2026</div>
+    <h1 class="reveal" style="transition-delay:.1s">國立臺灣大學<br>農業經濟學系<br>官方網站改版</h1>
+    <p class="lead reveal" style="transition-delay:.12s">以世界頂尖學院的視覺語言，<br>將百年學術傳承帶進數位時代。</p>
+    <p class="fine reveal" style="transition-delay:.18s">Next.js · Supabase · Vercel　—　預計 9/1 交付測試、9/15 正式上線</p>
+  </div>
+  <div class="scrollhint reveal" style="transition-delay:.3s">Scroll<span class="chev"></span></div>
+</section>
+
+<!-- 2 WHY -->
+<section class="slide alt" id="s2" data-label="為什麼改版">
+  <div class="inner">
+    <div class="eyebrow reveal">現況</div>
+    <h2 class="reveal" style="transition-delay:.05s">好的內容，<br>值得更好的載體。</h2>
+    <p class="lead reveal" style="transition-delay:.12s">現行官網歷經多年累積，資訊架構龐雜、視覺語言老舊、不支援行動裝置，內容更新還得仰賴工程協助 — 配不上農經系的學術地位。</p>
+  </div>
+</section>
+
+<!-- 3 PAIN POINTS -->
+<section class="slide" id="s3" data-label="四大痛點">
+  <div class="inner wide">
+    <div class="eyebrow reveal">四個要解決的問題</div>
+    <h2 class="reveal" style="transition-delay:.05s">從這裡開始。</h2>
+    <div class="grid g4 reveal" style="transition-delay:.12s">
+      <div class="cell"><div class="k">資訊架構龐雜</div><div class="d">11 大分類、逾 50 頁，選單重複、層級深，訪客不易找到目標。</div></div>
+      <div class="cell"><div class="k">視覺老舊</div><div class="d">缺乏一致的品牌識別與現代排版，難以呈現世界一流學院的質感。</div></div>
+      <div class="cell"><div class="k">非響應式</div><div class="d">手機與平板體驗不佳，然而多數報考學生以手機為主。</div></div>
+      <div class="cell"><div class="k">維護不便</div><div class="d">消息、師資、課程更新需仰賴工程協助，時效性受限。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 OLD SITEMAP -->
+<section class="slide tint" id="s4" data-label="原網站地圖">
+  <div class="inner wide">
+    <div class="eyebrow gold reveal">原網站地圖 · 現況</div>
+    <div class="stat reveal" style="transition-delay:.05s">50<span style="font-size:.5em;vertical-align:top">+</span></div>
+    <div class="stat-cap reveal" style="transition-delay:.1s">個頁面　·　11 大分類　·　3 處重複／分散的選單</div>
+    <div class="chips reveal" style="transition-delay:.16s">
+      <span class="chip"><b>最新消息</b><span class="c">4</span></span>
+      <span class="chip"><b>本系簡介</b><span class="c">7</span></span>
+      <span class="chip"><b>系所成員</b><span class="c">7</span></span>
+      <span class="chip"><b>招生資訊</b><span class="c">6</span></span>
+      <span class="chip"><b>課程資訊</b><span class="c">7</span></span>
+      <span class="chip"><b>碩士在職專班</b><span class="c">3</span></span>
+      <span class="chip"><b>國際專班</b><span class="c">5</span></span>
+      <span class="chip"><b>農業與經濟期刊</b><span class="c">4</span></span>
+      <span class="chip"><b>李總統登輝系友專區</b><span class="c">5</span></span>
+      <span class="chip"><b>網路資源</b><span class="c">5</span></span>
+      <span class="chip"><b>International Conference</b><span class="c">1</span></span>
+    </div>
+    <p class="lead reveal" style="transition-delay:.22s;font-size:17px">在職專班、國際專班各自獨立成選單、又散落在招生與課程之下 — 這正是改版要解決的核心。</p>
+  </div>
+</section>
+
+<!-- 5 NEW SITEMAP -->
+<section class="slide" id="s5" data-label="新網站地圖">
+  <div class="inner wide">
+    <div class="eyebrow gold reveal">改版後 · 新網站地圖</div>
+    <div class="stat green reveal" style="transition-delay:.05s">8</div>
+    <div class="stat-cap reveal" style="transition-delay:.1s">條清晰主線　·　點擊深度 ≤ 2　·　子分類改以頁內篩選呈現</div>
+    <div class="maplist reveal" style="transition-delay:.16s">
+      <div class="maprow"><span class="r">/</span><span class="n">首頁</span><span class="p">形象、消息摘要、招生入口</span></div>
+      <div class="maprow"><span class="r">/news</span><span class="n">最新消息</span><span class="p">公告·演講·徵才·活動</span></div>
+      <div class="maprow"><span class="r">/about</span><span class="n">本系簡介</span><span class="p">系史·目標·Mission</span></div>
+      <div class="maprow"><span class="r">/faculty</span><span class="n">系所成員</span><span class="p">師資分類切換</span></div>
+      <div class="maprow"><span class="r">/admissions</span><span class="n">招生資訊</span><span class="p">五學制 + 重要時程</span></div>
+      <div class="maprow"><span class="r">/courses</span><span class="n">課程資訊</span><span class="p">各學制課程表</span></div>
+      <div class="maprow"><span class="r">/journal</span><span class="n">農經期刊</span><span class="p">《農業與經濟》</span></div>
+      <div class="maprow"><span class="r">/alumni</span><span class="n">系友專區</span><span class="p">李總統登輝系友專區</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 ARCHITECTURE PRINCIPLE -->
+<section class="slide alt" id="s6" data-label="架構取捨">
+  <div class="inner wide">
+    <div class="eyebrow reveal">資訊架構原則</div>
+    <h2 class="reveal" style="transition-delay:.05s">選單回答「去哪一區」，<br>篩選回答「看哪一種」。</h2>
+    <div class="grid g3 reveal" style="transition-delay:.12s">
+      <div class="cell"><div class="num">01</div><div class="k">選單瘦身</div><div class="d">11 大類精煉為 8 條主線，一眼看懂全站結構。</div></div>
+      <div class="cell"><div class="num">02</div><div class="k">分類下沉</div><div class="d">子項改以頁內 chips／tabs 篩選，最多兩層觸及任何內容。</div></div>
+      <div class="cell"><div class="num">03</div><div class="k">整併重複</div><div class="d">在職／國際專班併入招生，零散的網路資源就近安置。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 DESIGN INTRO -->
+<section class="slide tint" id="s7" data-label="設計方向">
+  <div class="inner">
+    <div class="eyebrow reveal">設計方向</div>
+    <h2 class="reveal" style="transition-delay:.05s">兩種方向，<br>擇一打造。</h2>
+    <p class="lead reveal" style="transition-delay:.12s">我們提出兩種視覺語言，共用相同的資訊架構與品牌色。以下兩版供系辦挑選 — 選定其一，即為正式網站的設計。</p>
+  </div>
+</section>
+
+<!-- 8 STYLE A -->
+<section class="slide" id="s8" data-label="風格 A · 經典">
+  <div class="inner wide">
+    <div class="pv-wrap">
+      <div class="frame fa reveal">
+        <div class="topbar-mock">國立臺灣大學 · College of Bioresources and Agriculture</div>
+        <img src="preview-a/images/hero.png" alt="風格 A 經典學院派預覽">
+        <div class="veil"></div>
+        <div class="ey">Since 1919 · World-Class</div>
+        <div class="ti">培育世界一流的<br>農業經濟人才</div>
+      </div>
+      <div class="pv-side" style="text-align:left">
+        <div class="eyebrow reveal">風格 A · 經典學院派</div>
+        <h2 class="reveal" style="transition-delay:.05s;font-size:clamp(26px,3.4vw,40px)">權威、沉穩、<br>有歷史厚度。</h2>
+        <ul class="why reveal" style="transition-delay:.1s">
+          <li>襯線標題傳遞學術權威與百年底蘊</li>
+          <li>暖金頂欄與系徽，第一眼建立品牌識別</li>
+          <li>雙欄式版面，適合公告與期刊等文本</li>
+          <li>對標 Cornell CALS 等國際頂尖農學院</li>
+        </ul>
+        <div class="meta reveal" style="transition-delay:.14s">Noto Serif TC · 方正圓角 · 金 #F4B400 / 墨綠 #1E5238</div>
+        <a class="cta reveal" style="transition-delay:.18s" href="preview-a/" target="_blank" rel="noopener">開啟 A 版實機預覽　›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 STYLE B -->
+<section class="slide alt" id="s9" data-label="風格 B · 現代">
+  <div class="inner wide">
+    <div class="pv-wrap">
+      <div class="frame fb reveal">
+        <div class="inner-b"><img src="preview-b/images/hero.png" alt="風格 B 現代簡潔預覽"><div class="veil"></div></div>
+        <div class="glass"><span class="gd"></span><span class="gt">臺大農業經濟學系</span></div>
+        <div class="ey">National Taiwan University</div>
+        <div class="ti">農業經濟，<br>連結土地與世界</div>
+      </div>
+      <div class="pv-side" style="text-align:left">
+        <div class="eyebrow reveal">風格 B · 現代簡潔</div>
+        <h2 class="reveal" style="transition-delay:.05s;font-size:clamp(26px,3.4vw,40px)">輕快、乾淨、<br>年輕化。</h2>
+        <ul class="why reveal" style="transition-delay:.1s">
+          <li>粗黑標題與大留白，視覺輕快有記憶點</li>
+          <li>圓角卡片與毛玻璃導覽，貼近當代 App 體感</li>
+          <li>快速入口卡引導報考學生一鍵抵達</li>
+          <li>行動優先版面，手機瀏覽體驗最佳</li>
+        </ul>
+        <div class="meta reveal" style="transition-delay:.14s">Noto Sans TC 900 · 圓角 16–24px · 大量留白</div>
+        <a class="cta reveal" style="transition-delay:.18s" href="preview-b/" target="_blank" rel="noopener">開啟 B 版實機預覽　›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 TIMELINE -->
+<section class="slide" id="s11" data-label="時間表">
+  <div class="inner wide">
+    <div class="eyebrow reveal">執行時間表</div>
+    <h2 class="reveal" style="transition-delay:.05s">9 週交付。</h2>
+    <div class="tl reveal" style="transition-delay:.12s">
+      <div class="step"><span class="when">7/13–7/20</span><span class="what">需求確認與內容盤點</span></div>
+      <div class="step"><span class="when">7/21–8/10</span><span class="what">視覺定版 + 前端開發</span></div>
+      <div class="step"><span class="when">8/11–8/25</span><span class="what">後台 CMS 串接 + 資料搬遷</span></div>
+      <div class="step"><span class="when">8/26–8/31</span><span class="what">整合測試與修正</span></div>
+      <div class="step mile"><span class="when">9/1</span><span class="what"><b>交付測試版</b><span class="tag">里程碑</span>　供系辦全面試用驗收</span></div>
+      <div class="step"><span class="when">9/1–9/14</span><span class="what">系辦驗收與調整</span></div>
+      <div class="step mile"><span class="when">9/15</span><span class="what"><b>正式上線</b><span class="tag">里程碑</span>　綁定網域、切換正式站</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 QUOTE BASE -->
+<section class="slide alt" id="s12" data-label="報價 · 基本">
+  <div class="inner">
+    <div class="eyebrow gold reveal">報價 · 基本功能</div>
+    <h2 class="reveal" style="transition-delay:.05s">核心交付</h2>
+    <div class="qlist reveal" style="transition-delay:.12s">
+      <div class="qrow"><span class="l">網站視覺設計<small>兩版方向提案，擇一定稿</small></span><span class="v">30,000</span></div>
+      <div class="qrow"><span class="l">前端開發 · 8 頁 · RWD · 動畫<small>視差、淡入、Ken Burns 等互動</small></span><span class="v">40,000</span></div>
+      <div class="qrow"><span class="l">Supabase 內容管理後台<small>消息／師資／課程，自主更新</small></span><span class="v">20,000</span></div>
+      <div class="qrow"><span class="l">Vercel 部署 · CI/CD · SSL · 首年主機<small>push 即自動上線</small></span><span class="v">10,000</span></div>
+      <div class="qtotal"><span class="l">基本功能小計</span><span class="v">NT$ 100,000</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 QUOTE ADD -->
+<section class="slide" id="s13" data-label="報價 · 加值">
+  <div class="inner">
+    <div class="eyebrow gold reveal">報價 · 加值功能（選配）</div>
+    <h2 class="reveal" style="transition-delay:.05s">合計上限 NT$15 萬</h2>
+    <div class="qlist reveal" style="transition-delay:.12s">
+      <div class="qrow"><span class="l">舊站內容搬遷與整理</span><span class="v">15,000</span></div>
+      <div class="qrow"><span class="l">中英雙語系（i18n）</span><span class="v">18,000</span></div>
+      <div class="qrow"><span class="l">教職員登入後台</span><span class="v">12,000</span></div>
+      <div class="qrow"><span class="l">SEO · sitemap · OG · GA4</span><span class="v">5,000</span></div>
+      <div class="qtotal"><span class="l">建置費合計（含全部加值）</span><span class="v">NT$ 150,000</span></div>
+    </div>
+    <p class="qsub reveal" style="transition-delay:.18s"><b>年度維運 NT$36,000/年</b>（首年含）　·　付款 50 / 30 / 20　·　上線後 90 天保固</p>
+  </div>
+</section>
+
+<!-- 14 CLOSING -->
+<section class="slide tint" id="s14" data-label="結尾">
+  <div class="inner">
+    <div class="eyebrow reveal">The pitch</div>
+    <h1 class="reveal" style="transition-delay:.05s;font-size:clamp(30px,5.2vw,62px)">讓農經系的網路門面，<br>配得上它的學術地位。</h1>
+    <div class="linkrow reveal" style="transition-delay:.14s">
+      <a class="cta" href="preview-a/" target="_blank" rel="noopener">風格 A 實機預覽　›</a>
+      <a class="cta ghost" href="preview-b/" target="_blank" rel="noopener">風格 B 實機預覽　›</a>
+    </div>
+    <p class="fine reveal" style="transition-delay:.22s">國立臺灣大學 農業經濟學系　·　10617 臺北市大安區羅斯福路四段一號 · 農業綜合館　·　提案 2026</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots');
+  var pfill=document.getElementById('pfill');
+  var total=slides.length, active=0;
+
+  // build dot nav
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.type='button';
+    b.setAttribute('aria-label','前往：'+(s.dataset.label||('第 '+(i+1)+' 頁')));
+    b.innerHTML='<span class="lbl">'+(s.dataset.label||(i+1))+'</span>';
+    b.addEventListener('click',function(){ slides[i].scrollIntoView({behavior:'smooth'}); });
+    dotsWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+
+  function setActive(i){
+    if(i===active) return;
+    active=i;
+    dots.forEach(function(d,j){ d.setAttribute('data-active', j===i?'true':'false'); });
+    if(pfill) pfill.style.width=((i+1)/total*100)+'%';
+  }
+  dots[0].setAttribute('data-active','true');
+  if(pfill) pfill.style.width=(1/total*100)+'%';
+
+  // active slide tracking
+  if('IntersectionObserver' in window){
+    var actObs=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting && e.intersectionRatio>=0.55){ setActive(slides.indexOf(e.target)); }
+      });
+    },{threshold:[0.55]});
+    slides.forEach(function(s){ actObs.observe(s); });
+
+    // reveal (replays on re-enter)
+    var revObs=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting) e.target.classList.add('in');
+        else e.target.classList.remove('in');
+      });
+    },{threshold:0.18});
+    document.querySelectorAll('.reveal').forEach(function(r){ revObs.observe(r); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); });
+  }
+
+  // keyboard nav
+  window.addEventListener('keydown',function(ev){
+    var k=ev.key;
+    if(k==='ArrowDown'||k==='PageDown'||k===' '||k==='Spacebar'){ ev.preventDefault(); if(active<total-1) slides[active+1].scrollIntoView({behavior:'smooth'}); }
+    else if(k==='ArrowUp'||k==='PageUp'){ ev.preventDefault(); if(active>0) slides[active-1].scrollIntoView({behavior:'smooth'}); }
+    else if(k==='Home'){ ev.preventDefault(); slides[0].scrollIntoView({behavior:'smooth'}); }
+    else if(k==='End'){ ev.preventDefault(); slides[total-1].scrollIntoView({behavior:'smooth'}); }
+  });
+})();
+</script>
+</body>
+</html>

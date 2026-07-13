@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:#ffffff;}
+  .ph{background:repeating-linear-gradient(45deg,#eee7d3,#eee7d3 11px,#f5efdd 11px,#f5efdd 22px);display:flex;align-items:center;justify-content:center;color:#a3986f;font:500 12px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-align:center;}
+  .phd{background:repeating-linear-gradient(45deg,#d9d3bf,#d9d3bf 11px,#e2dcc7 11px,#e2dcc7 22px);display:flex;align-items:center;justify-content:center;color:#8f8862;font:500 12px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-align:center;}
+  @keyframes kb{0%{transform:scale(1)}100%{transform:scale(1.12) translate(-2%,-2%)}}
+  @keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  a{color:inherit;text-decoration:none;}
+  .navlink{cursor:pointer;position:relative;transition:color .2s;}
+  .navlink:hover{color:#B8860B;}
+  .btnY{cursor:pointer;transition:transform .18s,box-shadow .18s;}
+  .btnY:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(244,180,0,.4);}
+  .card{transition:transform .22s,box-shadow .22s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(80,70,30,.16);}
+  .row:hover{background:#fdfaf0;}
+  [data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .95s cubic-bezier(.22,.61,.36,1),transform .95s cubic-bezier(.22,.61,.36,1);}
+  [data-reveal].in{opacity:1;transform:none;}
+  [data-parallax]{will-change:transform;}
+</style>
+</helmet>
+<div style="font-family:'Noto Sans TC',sans-serif;color:#26271f;min-height:100vh;">
+
+  <!-- utility -->
+  <div style="background:#F4B400;color:#4a3a00;font-size:12.5px;display:flex;justify-content:space-between;align-items:center;padding:8px 40px;font-weight:500;">
+    <span>國立臺灣大學 College of Bioresources and Agriculture</span>
+    <div style="display:flex;gap:20px;align-items:center;"><span>繁體中文 · EN · 简</span><span>網站導覽</span><span style="border:1px solid rgba(74,58,0,.4);padding:3px 10px;border-radius:2px;">教職員登入</span></div>
+  </div>
+
+  <!-- sticky masthead + nav -->
+  <div style="position:sticky;top:0;z-index:50;background:#fff;border-bottom:3px solid #F4B400;box-shadow:0 2px 14px rgba(0,0,0,.05);">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 40px;">
+      <div class="navlink" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#F4B400;color:#1E5238;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-weight:700;font-size:18px;">農</div>
+        <div>
+          <div style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:20px;letter-spacing:.04em;color:#1E5238;">農業經濟學系暨研究所</div>
+          <div style="font-size:10.5px;letter-spacing:.26em;color:#B8860B;font-weight:600;text-transform:uppercase;margin-top:2px;">Dept. of Agricultural Economics · NTU</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;font-family:'Noto Serif TC',serif;font-size:15.5px;font-weight:500;white-space:nowrap;">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
+          <span class="navlink" onClick="{{ item.onClick }}">{{ item.label }}<sc-if value="{{ item.active }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-8px;height:3px;background:#F4B400;border-radius:2px;"></span></sc-if></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HOME ================= -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="position:relative;height:660px;overflow:hidden;background:#cfc9b4;">
+      <div data-parallax="0.34" style="position:absolute;left:0;right:0;top:-18%;height:136%;"><div class="phd" style="position:absolute;inset:0;animation:kb 22s ease-in-out infinite alternate;background-image:url('images/hero.png');background-size:cover;background-position:center;color:transparent;">影片背景 · CAMPUS / 農業影像 LOOP</div></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,45,32,.15),rgba(30,45,32,.62));"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 60px;">
+        <div style="width:44px;height:3px;background:#F4B400;margin-bottom:26px;border-radius:2px;animation:riseIn .6s .05s both;"></div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:15px;letter-spacing:.42em;color:#FFD758;text-transform:uppercase;margin-bottom:20px;animation:riseIn .6s .12s both;">Since 1919 · World-Class Agricultural Economics</div>
+        <h2 style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:58px;line-height:1.24;margin:0;color:#fff;text-shadow:0 2px 24px rgba(20,30,20,.4);animation:riseIn .6s .2s both;">培育世界一流的<br>農業經濟人才</h2>
+        <p style="max-width:640px;margin:26px 0 0;font-size:16px;line-height:1.9;color:#f4f6f0;animation:riseIn .6s .28s both;">追求頂尖之教學與研究水準，結合政策、市場與永續，回應臺灣與全球農業的關鍵課題。</p>
+        <div style="display:flex;gap:16px;margin-top:36px;animation:riseIn .6s .36s both;">
+          <span class="btnY" onClick="{{ goAdmission }}" style="background:#F4B400;color:#3a2e00;font-weight:700;font-size:15px;padding:13px 30px;border-radius:2px;">招生資訊</span>
+          <span class="btnY" onClick="{{ goAbout }}" style="border:1px solid rgba(255,255,255,.75);color:#fff;font-weight:500;font-size:15px;padding:13px 30px;border-radius:2px;">認識本系</span>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:16px;right:20px;font:500 11px/1 ui-monospace,monospace;letter-spacing:.1em;color:rgba(255,215,88,.9);">▶ VIDEO · 自動播放 / 靜音 / 循環</div>
+    </div>
+
+    <div data-reveal style="padding:64px 40px 48px;max-width:1180px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:52px;">
+        <div style="animation:riseIn .6s .05s both;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:3px solid #F4B400;padding-bottom:12px;margin-bottom:4px;">
+            <h3 style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:24px;margin:0;color:#1E5238;">最新消息</h3>
+            <span class="navlink" onClick="{{ goNews }}" style="font-size:13px;color:#B8860B;font-weight:600;">更多消息 →</span>
+          </div>
+          <sc-for list="{{ newsHome }}" as="n" hint-placeholder-count="4">
+            <div class="row" onClick="{{ goNews }}" style="display:flex;gap:18px;padding:18px 0;border-bottom:1px solid #eee7d3;cursor:pointer;">
+              <div style="flex:none;text-align:center;width:60px;"><div style="font-family:'Noto Serif TC',serif;font-size:26px;font-weight:700;color:#1E5238;">{{ n.day }}</div><div style="font-size:11px;color:#B8860B;letter-spacing:.1em;">{{ n.ym }}</div></div>
+              <div><span style="display:inline-block;background:#F4B400;color:#3a2e00;font-size:11px;font-weight:700;padding:2px 9px;border-radius:2px;margin-bottom:6px;">{{ n.cat }}</span><div style="font-size:15.5px;line-height:1.6;font-weight:500;">{{ n.title }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="animation:riseIn .6s .16s both;">
+          <div style="border-bottom:3px solid #F4B400;padding-bottom:12px;margin-bottom:18px;"><h3 style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:24px;margin:0;color:#1E5238;">演講公告</h3></div>
+          <div class="card" style="background:#FDF6E3;border:1px solid #F0E4BE;border-radius:4px;padding:22px;cursor:pointer;">
+            <div style="font-size:12px;letter-spacing:.16em;color:#B8860B;font-weight:700;margin-bottom:10px;">2026.05.28 · SEMINAR</div>
+            <div style="font-family:'Noto Serif TC',serif;font-size:19px;line-height:1.5;font-weight:600;margin-bottom:14px;color:#1E5238;">農業數據與農業政策研討會</div>
+            <div class="ph" style="height:120px;border-radius:3px;;background-image:url('images/poster.png');background-size:cover;background-position:center;color:transparent;">海報 · POSTER 4:3</div>
+          </div>
+          <div style="margin-top:16px;font-size:14px;line-height:1.9;">
+            <div style="padding:10px 0;border-bottom:1px solid #eee7d3;">6/08 Roger H. von Haefen 教授（NC State）蒞臨演講</div>
+            <div style="padding:10px 0;">5/29 傅羿寧（臺灣大學農業經濟學系）蒞臨演講</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="background:#FDF6E3;border-top:1px solid #F0E4BE;border-bottom:1px solid #F0E4BE;padding:52px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 40px;">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;"><h3 style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:24px;margin:0;color:#1E5238;">招生資訊</h3><span style="font-size:13px;color:#B8860B;">Admissions</span></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+          <sc-for list="{{ programs }}" as="p" hint-placeholder-count="4">
+            <div class="card" onClick="{{ goAdmission }}" style="background:#fff;border:1px solid #F0E4BE;border-radius:4px;padding:22px;cursor:pointer;"><div style="font-family:'Noto Serif TC',serif;font-size:19px;font-weight:600;margin-bottom:8px;color:#1E5238;">{{ p.name }}</div><div style="font-size:13px;color:#6f6c5c;line-height:1.7;">{{ p.desc }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- full-bleed parallax statement -->
+    <div style="position:relative;height:480px;overflow:hidden;">
+      <div data-parallax="0.30" style="position:absolute;left:0;right:0;top:-18%;height:136%;"><div style="position:absolute;inset:0;background:url('images/campus.png') center/cover;"></div></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,38,26,.74),rgba(18,38,26,.84));"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 8%;">
+        <div data-reveal style="max-width:960px;">
+          <div style="font-family:'Noto Serif TC',serif;font-size:13.5px;letter-spacing:.4em;color:#FFD758;text-transform:uppercase;margin-bottom:22px;">Excellence · 世界一流的追求</div>
+          <p style="font-family:'Noto Serif TC',serif;font-size:34px;line-height:1.55;font-weight:500;color:#fff;margin:0;">以嚴謹的經濟分析回應土地、市場<br>與全球農業的關鍵課題。</p>
+        </div>
+        <div data-reveal style="display:flex;gap:72px;margin-top:52px;">
+          <div><div style="font-family:'Noto Serif TC',serif;font-size:46px;font-weight:700;color:#FFD758;">1919</div><div style="font-size:13px;color:#c2d6c9;letter-spacing:.06em;margin-top:4px;">學術傳承起點</div></div>
+          <div><div style="font-family:'Noto Serif TC',serif;font-size:46px;font-weight:700;color:#FFD758;">450+</div><div style="font-size:13px;color:#c2d6c9;letter-spacing:.06em;margin-top:4px;">碩博畢業系友</div></div>
+          <div><div style="font-family:'Noto Serif TC',serif;font-size:46px;font-weight:700;color:#FFD758;">5</div><div style="font-size:13px;color:#c2d6c9;letter-spacing:.06em;margin-top:4px;">完整學制</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="padding:80px 40px;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div class="ph" style="height:320px;border-radius:4px;background-image:url('images/students.png');background-size:cover;background-position:center;color:transparent;">系所空間 / 師生活動 4:3</div>
+      <div style="animation:riseIn .6s .16s both;">
+        <div style="font-size:13px;letter-spacing:.24em;color:#B8860B;font-weight:600;text-transform:uppercase;margin-bottom:14px;">About · 系所簡介</div>
+        <h3 style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:30px;line-height:1.4;margin:0 0 20px;color:#1E5238;">以世界一流之教學與研究，<br>提升農業經濟學術地位</h3>
+        <p style="font-size:15.5px;line-height:2;color:#4f4d43;margin:0 0 24px;">本系設立宗旨在培養我國高級農業經濟人才，配合國家現代化農業建設。歷年培育的系友於政界、工商與金融界學以致用，對國家社會貢獻卓著。</p>
+        <span class="navlink" onClick="{{ goAbout }}" style="font-family:'Noto Serif TC',serif;font-size:15px;font-weight:600;color:#1E5238;border-bottom:3px solid #F4B400;padding-bottom:3px;">閱讀系史與願景 →</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= NEWS ================= -->
+  <sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="background:#1E5238;padding:56px 40px;"><div style="max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">News & Announcements</div><h2 style="font-family:'Noto Serif TC',serif;font-size:40px;color:#fff;margin:10px 0 0;">最新消息</h2></div></div>
+    <div style="max-width:1180px;margin:0 auto;padding:40px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+        <sc-for list="{{ newsCats }}" as="c" hint-placeholder-count="6">
+          <span style="font-size:13.5px;font-weight:600;padding:8px 18px;border-radius:20px;cursor:pointer;border:1px solid #eadfbf;color:#6f6c5c;">{{ c }}</span>
+        </sc-for>
+      </div>
+      <sc-for list="{{ newsAll }}" as="n" hint-placeholder-count="10">
+        <div class="row" style="display:flex;gap:22px;align-items:center;padding:20px 8px;border-bottom:1px solid #eee7d3;cursor:pointer;">
+          <div style="flex:none;width:96px;font-family:'Noto Serif TC',serif;color:#1E5238;font-weight:600;font-size:15px;">{{ n.full }}</div>
+          <span style="flex:none;display:inline-block;background:#F4B400;color:#3a2e00;font-size:11px;font-weight:700;padding:3px 10px;border-radius:2px;">{{ n.cat }}</span>
+          <div style="font-size:16px;line-height:1.5;font-weight:500;">{{ n.title }}</div>
+        </div>
+      </sc-for>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:36px;">
+        <span style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:3px;background:#F4B400;color:#3a2e00;font-weight:700;">1</span>
+        <span style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:3px;border:1px solid #eadfbf;cursor:pointer;">2</span>
+        <span style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:3px;border:1px solid #eadfbf;cursor:pointer;">3</span>
+        <span style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:3px;border:1px solid #eadfbf;cursor:pointer;">›</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= ABOUT ================= -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="position:relative;height:300px;overflow:hidden;background:#cfc9b4;">
+      <div class="phd" style="position:absolute;inset:0;;background-image:url('images/campus.png');background-size:cover;background-position:center;color:transparent;">系所建築 / 校園大圖 · 滿版</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,45,32,.2),rgba(30,45,32,.6));"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 40px;max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">About Us</div><h2 style="font-family:'Noto Serif TC',serif;font-size:44px;color:#fff;margin:10px 0 0;">本系簡介</h2></div>
+    </div>
+    <div style="max-width:1180px;margin:0 auto;padding:64px 40px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-bottom:64px;animation:riseIn .6s .05s both;">
+        <div>
+          <div style="font-size:13px;letter-spacing:.24em;color:#B8860B;font-weight:600;text-transform:uppercase;margin-bottom:14px;">History · 系史</div>
+          <h3 style="font-family:'Noto Serif TC',serif;font-size:28px;color:#1E5238;line-height:1.5;margin:0 0 18px;">歷史悠久的農業經濟學術重鎮</h3>
+          <p style="font-size:15.5px;line-height:2;color:#4f4d43;">本系為臺灣農業經濟研究與人才培育的重要基地，長期致力於農業政策、資源與環境經濟、市場與行銷、農村發展等領域。至今培育碩士畢業生逾四百餘人、博士畢業生數十人，系友遍及政界、學界、金融與產業界。</p>
+        </div>
+        <div class="ph" style="height:300px;border-radius:4px;;background-image:url('images/historic.png');background-size:cover;background-position:center;color:transparent;">歷史照片 4:3</div>
+      </div>
+      <div style="background:#FDF6E3;border:1px solid #F0E4BE;border-radius:6px;padding:44px;margin-bottom:48px;animation:riseIn .6s .1s both;">
+        <div style="font-size:13px;letter-spacing:.24em;color:#B8860B;font-weight:600;text-transform:uppercase;margin-bottom:14px;">Mission · 教學與研究目標</div>
+        <p style="font-family:'Noto Serif TC',serif;font-size:24px;line-height:1.7;color:#1E5238;font-weight:500;margin:0;">「培養我國高級農業經濟人才，配合國家現代化農業建設，並以追求世界一流之教學與研究水準，提升我國農業經濟學術地位為發展目標。」</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;animation:riseIn .6s .16s both;">
+        <div style="text-align:center;padding:28px;border:1px solid #eee7d3;border-radius:6px;"><div style="font-family:'Noto Serif TC',serif;font-size:44px;font-weight:700;color:#F4B400;">1919</div><div style="font-size:14px;color:#6f6c5c;margin-top:6px;">學術傳承起點</div></div>
+        <div style="text-align:center;padding:28px;border:1px solid #eee7d3;border-radius:6px;"><div style="font-family:'Noto Serif TC',serif;font-size:44px;font-weight:700;color:#F4B400;">450+</div><div style="font-size:14px;color:#6f6c5c;margin-top:6px;">碩博畢業系友</div></div>
+        <div style="text-align:center;padding:28px;border:1px solid #eee7d3;border-radius:6px;"><div style="font-family:'Noto Serif TC',serif;font-size:44px;font-weight:700;color:#F4B400;">5</div><div style="font-size:14px;color:#6f6c5c;margin-top:6px;">大學至國際專班學制</div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= FACULTY ================= -->
+  <sc-if value="{{ isFaculty }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="background:#1E5238;padding:56px 40px;"><div style="max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">Faculty & Staff</div><h2 style="font-family:'Noto Serif TC',serif;font-size:40px;color:#fff;margin:10px 0 0;">系所成員</h2></div></div>
+    <div style="max-width:1180px;margin:0 auto;padding:40px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+        <sc-for list="{{ facultyCats }}" as="c" hint-placeholder-count="5">
+          <span style="font-size:13.5px;font-weight:600;padding:8px 18px;border-radius:20px;cursor:pointer;border:1px solid #eadfbf;color:#6f6c5c;">{{ c }}</span>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+        <sc-for list="{{ faculty }}" as="f" hint-placeholder-count="8">
+          <div class="card" style="border:1px solid #eee7d3;border-radius:6px;overflow:hidden;cursor:pointer;">
+            <div class="ph" style="height:210px;;background-image:url('images/portrait.png');background-size:cover;background-position:center;color:transparent;">教師照片 3:4</div>
+            <div style="padding:18px;">
+              <div style="font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;color:#1E5238;">{{ f.name }}</div>
+              <div style="font-size:13px;color:#B8860B;font-weight:600;margin:3px 0 10px;">{{ f.title }}</div>
+              <div style="font-size:12.5px;color:#6f6c5c;line-height:1.6;">{{ f.field }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= ADMISSION ================= -->
+  <sc-if value="{{ isAdmission }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="position:relative;height:300px;overflow:hidden;background:#cfc9b4;">
+      <div class="phd" style="position:absolute;inset:0;;background-image:url('images/students.png');background-size:cover;background-position:center;color:transparent;">學生 / 校園大圖 · 滿版</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,45,32,.72),rgba(30,45,32,.3));"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 40px;max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">Admissions</div><h2 style="font-family:'Noto Serif TC',serif;font-size:44px;color:#fff;margin:10px 0 0;">招生資訊</h2></div>
+    </div>
+    <div style="max-width:1180px;margin:0 auto;padding:56px 40px;">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:56px;">
+        <sc-for list="{{ programsFull }}" as="p" hint-placeholder-count="5">
+          <div class="card" style="border:1px solid #eee7d3;border-radius:6px;padding:28px;display:flex;gap:22px;cursor:pointer;">
+            <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FDF6E3;color:#1E5238;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-weight:700;font-size:20px;">{{ p.icon }}</div>
+            <div><div style="font-family:'Noto Serif TC',serif;font-size:21px;font-weight:600;color:#1E5238;">{{ p.name }}</div><div style="font-size:12px;letter-spacing:.14em;color:#B8860B;font-weight:600;text-transform:uppercase;margin:2px 0 10px;">{{ p.en }}</div><div style="font-size:14px;color:#4f4d43;line-height:1.8;">{{ p.desc }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+      <h3 style="font-family:'Noto Serif TC',serif;font-size:24px;color:#1E5238;border-bottom:3px solid #F4B400;padding-bottom:12px;margin:0 0 28px;">重要時程</h3>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="4">
+          <div style="display:flex;gap:24px;align-items:flex-start;padding:18px 0;border-bottom:1px solid #eee7d3;">
+            <div style="flex:none;width:120px;font-family:'Noto Serif TC',serif;color:#B8860B;font-weight:600;">{{ t.when }}</div>
+            <div style="font-size:15.5px;color:#26271f;">{{ t.what }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= COURSE ================= -->
+  <sc-if value="{{ isCourse }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="background:#1E5238;padding:56px 40px;"><div style="max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">Courses</div><h2 style="font-family:'Noto Serif TC',serif;font-size:40px;color:#fff;margin:10px 0 0;">課程資訊</h2></div></div>
+    <div style="max-width:1180px;margin:0 auto;padding:40px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;">
+        <sc-for list="{{ courseTabs }}" as="c" hint-placeholder-count="5">
+          <span style="font-size:13.5px;font-weight:600;padding:8px 18px;border-radius:20px;cursor:pointer;border:1px solid #eadfbf;color:#6f6c5c;">{{ c }}</span>
+        </sc-for>
+      </div>
+      <div style="border:1px solid #eee7d3;border-radius:6px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:110px 1fr 90px 110px;background:#FDF6E3;font-family:'Noto Serif TC',serif;font-weight:600;color:#1E5238;font-size:14px;padding:14px 20px;">
+          <span>課號</span><span>課程名稱</span><span>學分</span><span>類別</span>
+        </div>
+        <sc-for list="{{ courses }}" as="c" hint-placeholder-count="6">
+          <div class="row" style="display:grid;grid-template-columns:110px 1fr 90px 110px;padding:15px 20px;border-top:1px solid #eee7d3;font-size:14.5px;align-items:center;">
+            <span style="color:#B8860B;font-weight:600;">{{ c.code }}</span><span style="font-weight:500;">{{ c.name }}</span><span>{{ c.credit }}</span><span style="color:#6f6c5c;">{{ c.type }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:22px;font-size:14px;color:#6f6c5c;">＊完整課程與修業規定請參閱 <span style="color:#B8860B;font-weight:600;">臺大課程地圖</span>。</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= JOURNAL ================= -->
+  <sc-if value="{{ isJournal }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="background:#1E5238;padding:56px 40px;"><div style="max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">Journal</div><h2 style="font-family:'Noto Serif TC',serif;font-size:40px;color:#fff;margin:10px 0 0;">農業與經濟期刊</h2></div></div>
+    <div style="max-width:1180px;margin:0 auto;padding:56px 40px;display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start;">
+      <div class="ph" style="height:380px;border-radius:6px;;background-image:url('images/journal.png');background-size:cover;background-position:center;color:transparent;">期刊封面 3:4</div>
+      <div>
+        <p style="font-size:16px;line-height:2;color:#4f4d43;margin:0 0 28px;">《農業與經濟》為本系發行之學術期刊，長期刊載農業經濟、資源與環境、農村發展等領域之研究成果，為國內重要的農業經濟學術園地。</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;">
+          <sc-for list="{{ journalLinks }}" as="j" hint-placeholder-count="4">
+            <div class="card" style="border:1px solid #eee7d3;border-radius:6px;padding:22px;cursor:pointer;"><div style="font-family:'Noto Serif TC',serif;font-size:17px;font-weight:600;color:#1E5238;">{{ j }}</div><div style="font-size:13px;color:#B8860B;margin-top:8px;">前往 →</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= ALUMNI ================= -->
+  <sc-if value="{{ isAlumni }}" hint-placeholder-val="{{ false }}">
+  <div style="animation:pageIn .55s cubic-bezier(.22,.61,.36,1) both;">
+    <div style="background:#1E5238;padding:56px 40px;"><div style="max-width:1180px;margin:0 auto;"><div style="font-size:13px;letter-spacing:.3em;color:#FFD758;text-transform:uppercase;font-weight:600;">Alumni</div><h2 style="font-family:'Noto Serif TC',serif;font-size:40px;color:#fff;margin:10px 0 0;">李總統登輝系友專區</h2></div></div>
+    <div style="max-width:1180px;margin:0 auto;padding:56px 40px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:48px;">
+        <div class="ph" style="height:320px;border-radius:6px;;background-image:url('images/alumni.png');background-size:cover;background-position:center;color:transparent;">系友紀念影像 4:3</div>
+        <div>
+          <h3 style="font-family:'Noto Serif TC',serif;font-size:26px;color:#1E5238;line-height:1.5;margin:0 0 16px;">求學紀事與捐贈書目</h3>
+          <p style="font-size:15.5px;line-height:2;color:#4f4d43;">本專區紀念傑出系友於本系之求學歷程，並典藏其捐贈之中、英、日文書目與期刊，供師生研究參考。</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+        <sc-for list="{{ alumniLinks }}" as="a" hint-placeholder-count="6">
+          <div class="card" style="border:1px solid #eee7d3;border-radius:6px;padding:22px;cursor:pointer;"><div style="font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;color:#1E5238;">{{ a }}</div></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- footer -->
+  <div style="background:#1E5238;color:#c2d6c9;padding:44px 40px;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;font-size:13px;line-height:1.9;">
+      <div><div style="font-family:'Noto Serif TC',serif;color:#FFD758;font-size:17px;font-weight:600;margin-bottom:8px;">國立臺灣大學 農業經濟學系</div>10617 臺北市大安區羅斯福路四段一號 · 農業綜合館<br>電話 (02) 3366-2600</div>
+      <div style="display:flex;gap:44px;"><span class="navlink" onClick="{{ goNews }}" style="display:block;">最新消息</span><span class="navlink" onClick="{{ goAdmission }}">招生資訊</span><span class="navlink" onClick="{{ goCourse }}">課程資訊</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { page: 'home' };
+  go(p){ this.setState({ page: p }); try{ window.scrollTo({ top: 0, behavior: 'smooth' }); }catch(e){} }
+  componentDidMount(){
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const sy = window.scrollY || window.pageYOffset;
+        document.querySelectorAll('[data-parallax]').forEach(el => {
+          const sp = parseFloat(el.getAttribute('data-parallax')) || 0.2;
+          const r = el.getBoundingClientRect();
+          const base = r.top + sy;
+          const y = (sy - base) * -sp;
+          el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    this._observe();
+  }
+  componentDidUpdate(){ this._onScroll && this._onScroll(); this._observe(); }
+  componentWillUnmount(){ window.removeEventListener('scroll', this._onScroll); if (this._io) this._io.disconnect(); }
+  _observe(){
+    if (!('IntersectionObserver' in window)) return;
+    if (this._io) this._io.disconnect();
+    this._io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); this._io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    setTimeout(() => { document.querySelectorAll('[data-reveal]:not(.in)').forEach(el => this._io.observe(el)); }, 30);
+  }
+  renderVals(){
+    const p = this.state.page;
+    const nav = [['home','首頁'],['news','最新消息'],['about','本系簡介'],['faculty','系所成員'],['admission','招生資訊'],['course','課程資訊'],['journal','農經期刊'],['alumni','系友專區']]
+      .map(([k,label]) => ({ key:k, label, active: p===k, onClick: () => this.go(k) }));
+    const newsAll = [
+      {full:'2026.06.09', day:'09', ym:'2026.06', cat:'最新公告', title:'115學年度「博士生獎學金」申請事宜（7/17 前送系辦彙整）'},
+      {full:'2026.06.03', day:'03', ym:'2026.06', cat:'活動剪影', title:'115年05月30日 農經系畢業典禮花絮'},
+      {full:'2026.05.28', day:'28', ym:'2026.05', cat:'演講公告', title:'農業數據與農業政策研討會'},
+      {full:'2026.05.19', day:'19', ym:'2026.05', cat:'招生', title:'115學年度申請入學第二階段口試時間公告'},
+      {full:'2026.05.05', day:'05', ym:'2026.05', cat:'求職徵才', title:'研究團隊誠徵兼任學生研究助理數名'},
+      {full:'2026.04.29', day:'29', ym:'2026.04', cat:'榮譽', title:'恭賀本系石曜合副教授榮獲國科會「吳大猷先生紀念獎」！'},
+      {full:'2026.04.24', day:'24', ym:'2026.04', cat:'活動剪影', title:'東華大學×臺大農經系 國際學生交流研討會'},
+      {full:'2026.03.26', day:'26', ym:'2026.03', cat:'招生', title:'115學年度申請入學 書面資料表格下載'},
+      {full:'2026.03.11', day:'11', ym:'2026.03', cat:'招生', title:'115學年度博士班招生簡章公告'},
+      {full:'2026.02.26', day:'26', ym:'2026.02', cat:'活動', title:'第三屆永續農業政策高峰圓桌會議'}
+    ];
+    const programs = [
+      {name:'大學部', desc:'申請入學 · 特殊選才'},
+      {name:'碩士班', desc:'甄試 · 一般考試'},
+      {name:'博士班', desc:'甄試 · 逕讀博士'},
+      {name:'在職 / 國際專班', desc:'碩士在職 · International'}
+    ];
+    const programsFull = [
+      {icon:'學', name:'大學部', en:'Undergraduate', desc:'透過申請入學與特殊選才招收，培養農業經濟基礎與分析能力。'},
+      {icon:'碩', name:'碩士班', en:'Master', desc:'甄試與一般考試兩管道，深化經濟理論與研究方法訓練。'},
+      {icon:'博', name:'博士班', en:'Ph.D.', desc:'甄試及逕行修讀博士學位，培育獨立研究之學者人才。'},
+      {icon:'職', name:'碩士在職專班', en:'EMBA-style', desc:'為在職專業人士設計，結合政策實務與經濟分析。'},
+      {icon:'際', name:'國際專班', en:'International Program', desc:'全英語授課碩士學程，招收國際與在地學生。'}
+    ];
+    const timeline = [
+      {when:'9 月', what:'碩、博士班甄試簡章公告與報名'},
+      {when:'11 月', what:'碩、博士班甄試筆試與口試'},
+      {when:'2–3 月', what:'大學部申請入學、在職專班招生簡章公告'},
+      {when:'5 月', what:'申請入學第二階段口試、正備取名單公告'}
+    ];
+    const faculty = Array.from({length:8}).map((_,i)=>({
+      name:'教師姓名',
+      title:['系主任 · 教授','教授','教授','副教授','副教授','助理教授','助理教授','合聘教授'][i],
+      field:['農業政策與發展','資源與環境經濟','農產運銷與市場','計量與應用經濟','國際貿易與農業','食品與消費經濟','農村與區域發展','風險與農業金融'][i]
+    }));
+    const courses = [
+      {code:'AGEC1001', name:'經濟學', credit:'3', type:'必修'},
+      {code:'AGEC2005', name:'農業經濟學', credit:'3', type:'必修'},
+      {code:'AGEC3012', name:'計量經濟學', credit:'3', type:'必修'},
+      {code:'AGEC4021', name:'農產運銷', credit:'3', type:'選修'},
+      {code:'AGEC5030', name:'資源與環境經濟學', credit:'3', type:'選修'},
+      {code:'AGEC6044', name:'農業政策專題', credit:'3', type:'研究所'}
+    ];
+    return {
+      nav,
+      isHome:p==='home', isNews:p==='news', isAbout:p==='about', isFaculty:p==='faculty',
+      isAdmission:p==='admission', isCourse:p==='course', isJournal:p==='journal', isAlumni:p==='alumni',
+      goHome:()=>this.go('home'), goNews:()=>this.go('news'), goAbout:()=>this.go('about'),
+      goFaculty:()=>this.go('faculty'), goAdmission:()=>this.go('admission'), goCourse:()=>this.go('course'),
+      newsHome:newsAll.slice(0,4), newsAll,
+      newsCats:['全部','最新公告','演講公告','招生資訊','求職徵才','活動剪影'],
+      programs, programsFull, timeline, faculty,
+      facultyCats:['專任師資','合聘師資','兼任師資','名譽教授','系所同仁'],
+      courseTabs:['大學部','碩士班','博士班','碩士在職專班','國際專班'],
+      courses,
+      journalLinks:['最新消息','出版與徵稿簡則','編輯委員會','文稿規格說明'],
+      alumniLinks:['求學紀事','中文書目','英文書目','日文書目','捐贈期刊','系友回娘家']
+    };
+  }
+}
+</script>
+</body>
+</html>
