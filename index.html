@@ -112,7 +112,7 @@
   .pv-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;text-align:left;}
   @media(max-width:820px){.pv-wrap{grid-template-columns:1fr;}}
   .frame{border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.14),0 6px 18px rgba(0,0,0,.06);background:#fff;position:relative;aspect-ratio:16/10;}
-  .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .frame img,.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .frame .veil{position:absolute;inset:0;}
   /* A frame */
   .fa .topbar-mock{position:absolute;top:0;left:0;right:0;height:22px;background:#f8b62c;z-index:3;display:flex;align-items:center;padding:0 12px;font-size:8px;color:#3a2e00;letter-spacing:.1em;font-weight:600;}
@@ -121,7 +121,7 @@
   .fa .ti{position:absolute;left:22px;bottom:24px;right:22px;z-index:3;font-family:var(--serif);font-weight:700;color:#fff;font-size:clamp(20px,2.4vw,26px);line-height:1.2;text-shadow:0 2px 14px rgba(0,0,0,.4);}
   /* B frame */
   .fb .inner-b{position:absolute;inset:12px;border-radius:15px;overflow:hidden;z-index:2;}
-  .fb .inner-b img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .fb .inner-b img,.fb .inner-b video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .fb .glass{position:absolute;top:0;left:0;right:0;height:26px;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);z-index:4;display:flex;align-items:center;gap:6px;padding:0 12px;}
   .fb .glass .gd{width:14px;height:14px;border-radius:5px;background:#f8b62c;}
   .fb .glass .gt{font-size:8.5px;font-weight:700;color:#00682f;}
@@ -359,7 +359,7 @@
     <div class="pv-wrap">
       <div class="frame fa reveal">
         <div class="topbar-mock">國立臺灣大學 · College of Bioresources and Agriculture</div>
-        <img src="preview-a/images/hero.png" alt="風格 A 經典學院派預覽">
+        <video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg"><source src="hero.mp4" type="video/mp4"></video>
         <div class="veil"></div>
         <div class="ey">Since 1919 · World-Class</div>
         <div class="ti">培育世界一流的<br>農業經濟人才</div>
@@ -385,7 +385,7 @@
   <div class="inner wide">
     <div class="pv-wrap">
       <div class="frame fb reveal">
-        <div class="inner-b"><img src="preview-b/images/hero.png" alt="風格 B 現代簡潔預覽"><div class="veil"></div></div>
+        <div class="inner-b"><video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg"><source src="hero.mp4" type="video/mp4"></video><div class="veil"></div></div>
         <div class="glass"><span class="gd"></span><span class="gt">臺大農業經濟學系</span></div>
         <div class="ey">National Taiwan University</div>
         <div class="ti">農業經濟，<br>連結土地與世界</div>
