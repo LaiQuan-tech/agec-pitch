@@ -1,38 +1,20 @@
 # interval 專案交接說明
 
-> 這個分支(`claude/interval-deployment-ecommerce-y9st93`)的 **`interval/` 資料夾**是一套完整、
-> 已通過 build 與手機版 RWD 驗證的全端應用,目標是搬進 <https://github.com/LaiQuan-tech/interval>。
-> 與 agec-pitch 簡報本身無關,請勿把此分支合併進 agec-pitch 的 main。
+> ✅ **程式碼已經推進 <https://github.com/LaiQuan-tech/interval> 的 `main`**(本 session 後續已取得
+> interval repo 權限,原本「手動搬運」的步驟不需要了)。
+> 此分支 `interval/` 資料夾僅作為開發紀錄備份,請勿把此分支合併進 agec-pitch 的 main。
 
-## 為什麼放在這裡?
+## 目前狀態
 
-這個 Claude 雲端工作階段只有 agec-pitch 的推送權限,而且:
-- `LaiQuan-tech/interval` repo 目前是**空的**(你本機的 interval 資料夾還沒 push)
-- 這個環境的網路政策擋掉了 Supabase / Vercel / Railway / Resend 的 API(403),無法直接遠端佈建
+- ✅ 完整應用已在 interval repo main:官網店面 + 會員系統 + `/admin` 電商後台 + AI 報價 + Railway api + CI
+- ✅ GitHub Actions CI 已隨 push 自動執行(lint / typecheck / build)
+- ⬜ 雲端資源(Supabase / Vercel / Railway)尚未佈建 —— 這個 Claude 環境的網路政策擋掉了
+  四個平台的 API(403),需要在你本機跑一次腳本,或開通網路後交給 Claude
 
-所以完整程式碼先放在這裡,並附上「一鍵佈建腳本」讓部署在你本機 30 秒內完成。
-
-## step 1 — 把程式碼搬進 interval repo(你的電腦上執行)
-
-```bash
-git clone --branch claude/interval-deployment-ecommerce-y9st93 \
-  https://github.com/LaiQuan-tech/agec-pitch interval-src
-
-mkdir interval-app && cp -R interval-src/interval/. interval-app/
-cd interval-app
-git init -b main
-git add -A
-git commit -m "feat: interval 全端應用(官網+會員+電商後台+AI 報價)"
-git remote add origin https://github.com/LaiQuan-tech/interval.git
-git push -u origin main
-```
-
-> 你本機原本的 interval 設計資料夾:先完成上面步驟,再把設計稿的頁面/素材
-> 搬進 `web/src/app` 與 `web/public` 後 commit,或整包丟給 Claude 幫你整合。
-
-## step 2 — 一鍵佈建(Supabase + Vercel + Railway + Resend)
+## 剩最後一步 — 一鍵佈建(你的電腦上執行)
 
 ```bash
+git clone https://github.com/LaiQuan-tech/interval && cd interval
 npm install
 
 SUPABASE_ACCESS_TOKEN=sbp_...(你的 token) \
@@ -46,12 +28,17 @@ node scripts/provision.mjs
 
 前置(各一次):Vercel 裝 [GitHub App](https://vercel.com/account/git)、Railway [連結 GitHub](https://railway.app/account),兩者都授權 `LaiQuan-tech/interval`。
 
-完成後:**push main → Vercel(網站)+ Railway(API)自動部署**,GitHub Actions 自動跑 CI。
-後台在 `/admin`(用 ADMIN_EMAIL 登入)。細節見 `interval/README.md`。
+完成後:**push main → Vercel(網站)+ Railway(API)自動部署**。
+後台在 `/admin`(用 ADMIN_EMAIL 登入)。細節見 interval repo 的 `README.md`。
 
 ## 也可以全部交給 Claude 遠端完成
 
-到 <https://claude.ai/code> 的環境設定:
-1. 把 **interval repo 加入環境的 sources**
-2. 網路政策允許 `api.supabase.com`、`api.vercel.com`、`backboard.railway.app`、`api.resend.com`
-3. 開新對話說「執行 interval 的佈建」即可
+到 <https://claude.ai/code> 的環境設定,把網路政策放行
+`api.supabase.com`、`api.vercel.com`、`backboard.railway.app`、`api.resend.com`,
+然後開新對話說「執行 interval 的佈建」即可(interval repo 已在 session 範圍內)。
+
+## 你本機的 claude design 網站
+
+先 `git pull` interval repo(裡面已有完整應用),再把設計稿的頁面/素材搬進
+`web/src/app` 與 `web/public` 後 commit push,或整包丟給 Claude 幫你整合 ——
+**不要直接 force push 覆蓋 main**,會把會員/後台/AI 報價整套蓋掉。
